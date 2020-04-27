@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id = "myForm" action="js2Action.jsp">
+      id : <input type="text" id="id" name="id"> <br>
+      pw : <input type="password" id = "pw1" name="pw1">
+      pw확인 : <input type="password" id = "pw2" name="pw2"> <br>
+    	  성별 : 
+      <input type="radio" class="gender" name="gender">남
+      <input type="radio" class="gender" name="gender">여<br>
+     	 취미:
+      <input type="checkbox" class="hobby" name="hobby" value = "축구">축구
+      <input type="checkbox" class="hobby" name="hobby" value = "야구">야구
+       <input type="checkbox" class="hobby" name="hobby" value = "게임">게임<br>
+       <button type = "button" id="btn">회원가입</button>
+       </form>
+</body>
+<script>
+	let btn = document.getElementById("btn"); // btn에 버튼기능이 있음
+	btn.addEventListener("click", function(){
+		console.log("click...")
+		let id = document.getElementById("id").value;
+		console.log(id);
+		let pw1 = document.getElementById("pw1").value;
+		console.log(pw1);
+		let pw2 = document.getElementById("pw2").value;
+		console.log(pw2);
+		let gender = document.getElementsByClassName("gender");//gender은 class 태그가 두개라서 배열로 가져와야함
+		console.log(gender);
+		let hobby = document.getElementsByClassName("hobby");
+		console.log(hobby);
+		if(id == ""){
+			alert("id를 입력하세요");
+			return;
+		}else if (pw1 == ""){
+			alert("pw1를 입력하세요");
+			return;
+		}else if (pw1 != pw2){
+			alert("비밀번호가 일치하지 않습니다.");
+			return;
+		}
+		//gender
+		let genderFlag = true;
+		for(let i = 0; i<gender.length; i++){
+			if(gender[i].checked == true){
+				genderFlag = false;
+			}
+		}
+		if(genderFlag){
+			alert("gender를 선택하세요");
+			return;
+		}
+		document.getElementById("myForm").submit();
+	});
+</script>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		console.log("ready...");
+		$("#clear").click(function(){
+			$("#output").val(0);
+			
+		});
+		$("#execute").click(function(){
+			$("output").val(sum);
+			$("#output").val("수식이 정확한지 확인해주세요.");
+		});
+		
+		$("#leftBracket").click(function(){
+			if($("#output").val() == "0"){
+				$("#output").val(")");
+			}else{
+				$("#output").val($("#output").val()+")");
+			}
+		});
+		$("#leftBracket").click(function(){
+			if($("#output").val() == "0"){
+				$("#output").val("(");
+			}else{
+				$("#output").val($("#output").val()+"(");
+			}
+		});
+		$("#division").click(function(){
+			if($("#output").val()!= "0"){
+				$("#output").val($("#output").val()+"÷");
+			}
+		});
+		$("#multiply").click(function(){
+			if($("#output").val()!= "0"){
+				$("#output").val($("#output").val()+"X");
+			}
+		});
+		$("#minus").click(function(){
+			if($("#output").val()!= "0"){
+				$("#output").val($("#output").val()+"-");
+			}
+		});
+		$("#plus").click(function(){
+			if($("#output").val()!= "0"){
+				$("#output").val($("#output").val()+"+");
+			}
+		});
+		$("#zero").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("0");
+			}else{
+				$("#output").val($("#output").val()+"0");
+			}
+		});
+		$("#one").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("1");
+			}else{
+				$("#output").val($("#output").val()+"1");
+			}
+		});
+		$("#two").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("2");
+			}else{
+				$("#output").val($("#output").val()+"2");
+			}
+		});
+		$("#three").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("3");
+			}else{
+				$("#output").val($("#output").val()+"3");
+			}
+		});
+		$("#four").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("4");
+			}else{
+				$("#output").val($("#output").val()+"4");
+			}
+		});
+		$("#five").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("5");
+			}else{
+				$("#output").val($("#output").val()+"5");
+			}
+		});
+		$("#six").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("6");
+			}else{
+				$("#output").val($("#output").val()+"6");
+			}
+		});
+		$("#seven").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("7");
+			}else{
+				$("#output").val($("#output").val()+"7");
+			}
+		});
+		$("#eight").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("8");
+			}else{
+				$("#output").val($("#output").val()+"8");
+			}
+		});
+		$("#nine").click(function(){
+			if($("#output").val()== "0"){
+				$("#output").val("9");
+			}else{
+				$("#output").val($("#output").val()+"9");
+			}
+		});
+		$("#backspace").click(function(){
+			x = $("#output").val();
+				$("#output").val(x.substring(0, x.length-1));
+		
+		});
+		$("#result").click(function(){
+			x = $("#output").val();
+				$("#output").val(x.substring(0, x.length-1));
+		
+		});
+		
+			
+	});
+</script>
+<style>
+	
+	.two{
+	height : 80px;
+	width : 400px;
+	}
+	.btn-circle.btn-xl { 
+            width: 100px; 
+            height: 100px; 
+            padding: 20px 16px; 
+            border-radius: 50px; 
+            font-size: 20px; 
+            text-align: center; 
+        } 
+</style>
+</head>
+<body>
+	<div class = "container">
+		<div class = "row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">	
+				<!-- 결과창 -->
+		<div>
+		<input id = "output" class = "two" type = "text" value = "0">
+		</div>	
+		
+		<br>
+		
+		<div >
+			
+				<button type = "button" class = "btn btn-primary btn-circle btn-xl" id = "clear">C</button>
+				<button type = "button" class = "btn btn-primary btn-circle btn-xl" id = "leftBracket">(</button>
+				<button type = "button" class = "btn btn-primary btn-circle btn-xl" id = "rightBracket">)</button>
+				<button type = "button" class = "btn btn-primary btn-circle btn-xl" id = "division">÷</button>
+					
+		</div>
+		<br>
+		<div>
+			
+				<button type = "button" class = "btn btn-success btn-circle btn-xl" id = "seven">7</button>
+				<button type = "button" class = "btn btn-success btn-circle btn-xl" id = "eight">8</button>
+				<button type = "button" class = "btn btn-success btn-circle btn-xl" id = "nine">9</button>
+				<button type = "button" class = "btn btn-success btn-circle btn-xl" id = "multiply">X</button>
+					
+		</div>
+		<br>
+		<div>
+			
+				<button type = "button" class = "btn btn-warning btn-circle btn-xl" id = "four">4</button>
+				<button type = "button" class = "btn btn-warning btn-circle btn-xl" id = "five">5</button>
+				<button type = "button" class = "btn btn-warning btn-circle btn-xl" id = "six">6</button>
+				<button type = "button" class = "btn btn-warning btn-circle btn-xl" id = "minus">-</button>
+					
+		</div>
+		<br>
+		<div>
+			
+				<button type = "button" class = "btn btn-info btn-circle btn-xl" id = "one">1</button>
+				<button type = "button" class = "btn btn-info btn-circle btn-xl" id = "two">2</button>
+				<button type = "button" class = "btn btn-info btn-circle btn-xl" id = "three">3</button>
+				<button type = "button" class = "btn btn-info btn-circle btn-xl" id = "plus">+</button>
+					
+		</div>
+		<br>
+		<div>
+			
+				<button type = "button" class = "btn btn-light btn-circle btn-xl" id = "zero">0</button>
+				<button type = "button" class = "btn btn-secondary btn-circle btn-xl" id = "com">.</button>
+				<button type = "button" class = "btn btn-danger btn-circle btn-xl" id = "backspace">←</button>
+				<button type = "button" class = "btn btn-dark btn-circle btn-xl" id = "execute">=</button>
+					
+		</div>
+		</div>
+		<div class="col-sm-2"></div>
+		</div>
+		
+	</div>
+</body>
+<script>
+	
+</script>
+</html>

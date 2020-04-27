@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>javascript 연습</h1>
+	<form>
+		<input type ="text" id = "name" name = "name" value = "jjdev">
+		<button type = "button" id = "btn">회원가입</button>
+	</form>
+</body>
+
+<script>
+		/* let name = document.getElementById("name");//documnet(문서 안에서).getElementById(Id를 가져온다) 
+		let btn = document.getElementById("btn");
+		btn.addEventListener("click", function(){
+			if(name.value == ""){
+				alert("이름을 입력하세요");
+			} else{
+				alert("action...submit....");
+			}
+			});
+		*/
+		let a = 1;  //int
+		let a2 = 1.7; //int
+		let b = "test";//'test' String
+		let b2 = "t";
+		let c = true;
+		let c2 = false;
+		let d = [1,3,4]; // [] -> 배열 
+		let e = {id:"name", pw:"1234"}; // {} -> 객체를 만들때 사용
+		console.log(e.id);
+		let f = function(){
+			console.log("hello")
+			
+		};
+		f();
+		//함수
+		 let hello = function(){
+			console.log("hello");
+			return "하하하";
+		};
+		let h = hello();
+		console/log(h);
+		let myAdd = function(x,y){
+			let z = x+y;
+			return z;
+		}
+		let result = myAdd(1, 3);
+		console.log(result);
+		
+		//일급함수(함수를 변수에 저장 할 수 있다.)
+		let hi = function(){
+			console.log("hi");
+		};
+		
+		// let xxx = hi(); // undefined
+		let xxx = hi;
+		xxx();
+		
+		let fun1 = function() {
+			return hi;
+		}
+		
+		let yyy = fun1();
+		yyy();
+		fun1()();
+		
+		let fun2 = function(x){
+			x();
+		}
+		
+		fun2(hi);
+		fun2(hello);
+		
+		//객체
+		
+		let object = {
+			id:"admin",
+			pw:"1234",
+			play:function(){ // method
+				console.log("play!");
+				console.log(this.id);//object.id 
+			}
+		};
+		
+		object.id = "종혁";
+		object.pw = "1234";
+		console.log(object.id);
+		console.log(object.pw);
+		object.play();
+		//window.alert(name.value);
+		//if(name.value)//name. 뒤는 변수 or 메소드
+		//Infinity : 무한대의 값
+		//Integer x = 10; <---x Integer x = new Integer(10); boxing 
+</script>
+</html>
