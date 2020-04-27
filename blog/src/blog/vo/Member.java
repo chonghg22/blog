@@ -5,7 +5,29 @@ public class Member {
 	private String memberId;
 	private String memberPw;
 	private int memberLevel;
+	private String memberPhone;
+	private String memberAddress;
+	private String memberBirth;
 	private String memberDate;
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
+	}
+	public String getMemberAddress() {
+		return memberAddress;
+	}
+	public void setMemberAddress(String memberAddress) {
+		this.memberAddress = memberAddress;
+	}
+	public String getMemberBirth() {
+		return memberBirth;
+	}
+	public void setMemberBirth(String memberBirth) {
+		this.memberBirth = memberBirth;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}

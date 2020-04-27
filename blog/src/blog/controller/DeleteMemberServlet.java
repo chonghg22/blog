@@ -32,7 +32,7 @@ public class DeleteMemberServlet extends HttpServlet {
 		//현재 로그인 되어있는값을 변수로 기입한다.
 		Member member = (Member)(request.getSession().getAttribute("loginMember"));
 		member.setMemberPw(request.getParameter("memberPw"));
-		//System.out.println(member.getMemberId() + "<-- memberId");
+		System.out.println(member.getMemberId() + "<-- memberId");
 		
 		//객체선언
 		memberService = new MemberService();

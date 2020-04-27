@@ -30,10 +30,10 @@ public class AddLikeyServlet extends HttpServlet {
 			}
 		//selectPostOne.jsp에서 넘긴 postNo값을 받아 다시 postNo 변수로 기입한다.
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		//System.out.println(postNo + "/postNo/11111");
+		System.out.println(postNo + "/postNo/11111");
 		//selectPostOne.jsp에서 넘긴  likeyCk값을 받아 다시 likeyCk 변수로 기입한다.
 		int likeyCk = Integer.parseInt(request.getParameter("likeyCk"));
-		//System.out.println(likeyCk +"/likeyCk");
+		System.out.println(likeyCk +"/likeyCk");
 		
 		//현재 로그인 되어있는 아이디를 변수로 기입한다.
 		String memberId = loginMember.getMemberId();

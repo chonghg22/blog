@@ -63,13 +63,13 @@ public class InsertSubjectServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
-		//System.out.println(memberId + "/memberId/insertSubject/");
+		System.out.println(memberId + "/memberId/insertSubject/");
 		String subjectName = request.getParameter("subjectName");
-		//System.out.println(subjectName + "/subjectName/insertSubject/");
+		System.out.println(subjectName + "/subjectName/insertSubject/");
 		String postTitle = request.getParameter("postTitle");
-		//System.out.println(postTitle + "/postTitle/insertsubject");
+		System.out.println(postTitle + "/postTitle/insertsubject");
 		String postContent = request.getParameter("postContent");
-		//System.out.println(postContent + "/postContent/insertsubject");
+		System.out.println(postContent + "/postContent/insertsubject");
 		
 		post = new Post();
 		post.setMemberId(memberId);

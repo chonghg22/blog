@@ -61,6 +61,9 @@ body {
 				<td>memberId</td>
 				<td>memberPw</td>
 				<td>memberLevel</td>
+				<td>memberPhone</td>
+				<td>memberAddress</td>
+				<td>memberBirth</td>
 				<td>memberDate</td>
 				<td>Level변경</td>
 				<td>회원삭제</td>
@@ -77,6 +80,9 @@ body {
     			일반멤버
     			</c:if>
 				</td>
+				<td>${m.memberPhone }</td>
+				<td>${m.memberAddress }</td>
+				<td>${m.memberBirth }</td>
 				<td>${m.memberDate}</td>
 				<td><a href="${pageContext.request.contextPath}/UpdateMemberLevel?memberId=${m.memberId}">변경</a></td>
 				<td><a href = "${pageContext.request.contextPath}/DeleteMemberServlet">삭제</a>

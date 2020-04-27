@@ -65,6 +65,18 @@ body {
 						<label for="usr">PW:</label> 
 						<input type="password"	name="memberPw" class="form-control" id="usr">
 					</div>
+					<div class="form-group">
+						<label for="usr">Phone:</label> 
+						<input type="text"	name="memberPhone" class="form-control" id="usr">
+					</div>
+					<div class="form-group">
+						<label for="usr">Address:</label> 
+						<input type="text"	name="memberAddress" class="form-control" id="usr">
+					</div>
+					<div class="form-group">
+						<label for="usr">Birth:</label> 
+						<input type="date"	name="memberBirth" class="form-control" id="usr">
+					</div>
 					<div>
 						<button type="submit" class="btn btn-primary">추가</button>
 					</div>

@@ -11,7 +11,7 @@ import blog.vo.*;
 
 public class MemberDao {
 	public Member selectMemberList(Connection conn, Member member) throws Exception {
-		String sql = "SELECT member_id, member_pw, member_level FROM member WHERE member_id=? AND member_pw=?";
+		String sql = "SELECT member_id, member_pw, member_level,member_phone, member_address, member_birth FROM member WHERE member_id=? AND member_pw=?";
 		//Member m = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -25,6 +25,10 @@ public class MemberDao {
 				member.setMemberId(rs.getString("member_id"));
 				member.setMemberPw(rs.getString("member_pw"));
 				member.setMemberLevel(rs.getInt("member_level"));
+				member.setMemberPhone(rs.getString("member_phone"));
+				member.setMemberAddress(rs.getString("member_address"));
+				member.setMemberBirth(rs.getString("member_birth"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,6 +53,9 @@ public class MemberDao {
 				member.setMemberId(rs.getString("member_id"));
 				member.setMemberPw(rs.getString("member_pw"));
 				member.setMemberLevel(rs.getInt("member_level"));
+				member.setMemberPhone(rs.getString("member_phone"));
+				member.setMemberAddress(rs.getString("member_address"));
+				member.setMemberBirth(rs.getString("member_birth"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,11 +89,14 @@ public class MemberDao {
 	public void InsertMember(Connection conn, Member member) throws Exception {
 		//System.out.println(member.getMemberId()+"<<<<<<<<<DAO ID");
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO member(member_id, member_pw, member_level, member_date) VALUES(?,?,10,now())";
+		String sql = "INSERT INTO member(member_id, member_pw, member_level, member_phone, member_address, member_birth, member_date) VALUES(?,?,10,?,?,?,now())";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());
 			stmt.setString(2, member.getMemberPw());
+			stmt.setString(3, member.getMemberPhone());
+			stmt.setString(4,  member.getMemberAddress());
+			stmt.setString(5, member.getMemberBirth());
 			stmt.executeUpdate();
 		}finally {
 			stmt.close();
@@ -129,6 +139,9 @@ public class MemberDao {
 				m.setMemberId(rs.getString("member_id"));
 				m.setMemberPw(rs.getString("member_pw"));
 				m.setMemberLevel(rs.getInt("member_level"));
+				m.setMemberPhone(rs.getString("member_phone"));
+				m.setMemberAddress(rs.getString("member_address"));
+				m.setMemberBirth(rs.getString("member_birth"));
 				m.setMemberDate(rs.getString("member_date"));
 				list.add(m);
 			}

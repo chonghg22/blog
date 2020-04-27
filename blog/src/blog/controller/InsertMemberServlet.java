@@ -48,15 +48,24 @@ public class InsertMemberServlet extends HttpServlet {
 		}
 		//login.jsp에서 입력한 memberId값을 가져와 memberId 변수에 기입한다.
 		String memberId = request.getParameter("memberId");
-		//System.out.println(memberId+"<<<<<<<<<<<<<<<<memberId");
+		System.out.println(memberId+"<<<<<<<<<<<<<<<<memberId");
 		//login.jsp에서 입력한 memberPw값을 가져와 memberPw 변수에 기입한다.
 		String memberPw = request.getParameter("memberPw");
-		//System.out.println(memberPw+"<<<<<<<<<<<<<<<memberPw");
+		System.out.println(memberPw+"<<<<<<<<<<<<<<<memberPw");
+		String memberPhone = request.getParameter("memberPhone");
+		System.out.println(memberPhone + "/memberPhone/insertMember");
+		String memberAddress = request.getParameter("memberAddress");
+		System.out.println(memberAddress + "/memberAddress/insertMember");
+		String memberBirth = request.getParameter("memberBirth");
+		System.out.println(memberBirth + "/memberBirth/insertMember");
 		
 		//객체 선언 후 request로 가져온 값을을 member변수에 기입한다.
 		Member member = new Member();
 		member.setMemberId(memberId);
 		member.setMemberPw(memberPw);
+		member.setMemberPhone(memberPhone);
+		member.setMemberAddress(memberAddress);
+		member.setMemberBirth(memberBirth);
 		
 		memberService = new MemberService();
 		//기존에 가입되어있던 회원이면 홈으로 돌아간다.

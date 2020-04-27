@@ -60,6 +60,9 @@ body {
 		</div>
 		<div class="form-group">
 			<label for="usr"> member_level : ${member.memberLevel}</label> 		
+		</div>
+		<div>
+			<a href = "${pageContext.request.contextPath}/UpdateMember">정보수정</a>
 		</div>	        
         <div>
             <a href="${pageContext.request.contextPath}/DeleteServlet">회원탈퇴</a>

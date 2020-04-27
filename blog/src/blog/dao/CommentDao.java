@@ -32,8 +32,7 @@ public class CommentDao {
 			
 			try {
 				stmt.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+			} catch (SQLException e1) {			
 				e1.printStackTrace();
 			}
 		}

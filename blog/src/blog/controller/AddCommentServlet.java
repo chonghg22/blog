@@ -37,15 +37,15 @@ public class AddCommentServlet extends HttpServlet {
 	
 	//selectPostOne jsp에서 hidden으로 보낸  postNo를  숫자값으로 변환해서 변수에 기입한다.
 	int postNo = Integer.parseInt(request.getParameter("postNo"));
-	//System.out.println(postNo + "/postNo/addComment/");
+	System.out.println(postNo + "/postNo/addComment/");
 	
 	//로그인 되어있는 id 값을 가져와서 memeberId에 변수 기입한다.
 	String memberId = loginMember.getMemberId();
-	//System.out.println(memberId+ "/memberId/addComment/");
+	System.out.println(memberId+ "/memberId/addComment/");
 	
 	//selectPostOne에서 입력한 commentContent값을 가져와서 변수로 지정한다. 
 	String commentContent = request.getParameter("commentContent");
-	//System.out.println(commentContent + "/commentContent/addComment/");
+	System.out.println(commentContent + "/commentContent/addComment/");
 	
 	//객체선언을 하고 변수 지정한 값들을 comment에 기입한다.
 	comment = new Comment();

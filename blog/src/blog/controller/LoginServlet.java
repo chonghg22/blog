@@ -33,20 +33,20 @@ public class LoginServlet extends HttpServlet {
 	//login action
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
-		//System.out.println(memberId + "/memberId/LoginId");
+		System.out.println(memberId + "/memberId/LoginId");
 		String memberPw = request.getParameter("memberPw");
-		//System.out.println(memberPw + "/memberPw/LoginPw");
+		System.out.println(memberPw + "/memberPw/LoginPw");
 		
 		//객체선언
 		Member member = new Member();
 		member.setMemberId(memberId);
 		member.setMemberPw(memberPw);
-		//System.out.println(member + "/member/Loginmember/");
+		System.out.println(member + "/member/Loginmember/");
 		//객체선언
 		memberService = new MemberService();
 		//member 변수값을 selectall 메소드로 보내 실행시킨뒤 그 값을 다시 가져와 retrunmember 변수에 기입한다.
 		Member returnMember = memberService.selectAll(member);
-		//System.out.println(returnMember + "returnMember/Login/");
+		System.out.println(returnMember + "returnMember/Login/");
 		if(returnMember == null) {
 			response.sendRedirect(request.getContextPath()+"/LoginServlet");
 		}else {
