@@ -75,7 +75,7 @@ body {
 	position: fixed;
 	background: orange;
 	overflow: hidden;
-	float: left;
+	float: center;
 }
 
 #section {
@@ -88,13 +88,19 @@ body {
 	 <div id="aside">		
 	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
 	</div>
-	<div id="section">		
+	<div id="section">	
+	<c:if test="${loginMember==null}">
+   		<li>
+   		<a href="${pageContext.request.contextPath}/InsertMemberServlet" >회원가입</a>
+   		</li>   		
+	</c:if>	
 		<div>
 		<form id="login-form" onsubmit="return login()" method = "post" action="${pageContext.request.contextPath}/LoginServlet">
 			<h3>로그인 폼</h3>
 			<input type="text" placeholder="ID" name = "memberId"  required/>
 	     	 <input type="text" placeholder="Pw" name = "memberPw" required/>
-	      	<button type = "submit">로그인</button>		
+	      	<button type = "submit">로그인</button>	
+	      		
 		</form>
 		</div>
 	</div>

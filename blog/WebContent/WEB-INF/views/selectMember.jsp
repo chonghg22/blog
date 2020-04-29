@@ -62,7 +62,7 @@ body {
 			<label for="usr"> member_level : ${member.memberLevel}</label> 		
 		</div>
 		<div>
-			<a href = "${pageContext.request.contextPath}/UpdateMember">정보수정</a>
+			<a href = "${pageContext.request.contextPath}/UpdateMember?memberId=${member.memberId}">정보수정</a>
 		</div>	        
         <div>
             <a href="${pageContext.request.contextPath}/DeleteServlet">회원탈퇴</a>

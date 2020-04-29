@@ -10,6 +10,21 @@ import blog.commons.DBUtil;
 import blog.vo.*;
 
 public class MemberDao {
+	public void updateMember(Connection conn, Member member)throws Exception {
+		String sql = "UPDATE member SET member_pw=?, member_phone=?, member_address=?, member_birth=?, member_date=now() WHERE member_id=?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, member.getMemberPw());
+			stmt.setString(2,  member.getMemberPhone());
+			stmt.setString(3, member.getMemberAddress());
+			stmt.setString(4, member.getMemberBirth());
+			stmt.setString(5, member.getMemberId());
+			stmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public Member selectMemberList(Connection conn, Member member) throws Exception {
 		String sql = "SELECT member_id, member_pw, member_level,member_phone, member_address, member_birth FROM member WHERE member_id=? AND member_pw=?";
 		//Member m = null;
@@ -190,4 +205,6 @@ public class MemberDao {
 			stmt.close();
 		}
 	}
+	
+
 }

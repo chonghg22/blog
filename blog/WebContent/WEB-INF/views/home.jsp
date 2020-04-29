@@ -5,6 +5,7 @@
 <head>
 <title>Home</title>
 <meta charset="UTF-8">
+<!-- 
 <style>
     body {
         padding: 0;
@@ -30,10 +31,12 @@
     }
     
     #section {
+    	padding-top: 0px;
         margin-left: 300px;
         background: white;
     }
 </style>
+-->
 </head>
 <body>
     <div id="aside">
@@ -41,18 +44,11 @@
 	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
     </div>
     <div id="section">
-        <h1>Home</h1>
+        <h1>블로그에 오신걸 환영합니다.</h1>
         <div>
-        	<!-- 로그아웃 -->
-            <c:if test="${loginMember==null}">
-            	<a href="${pageContext.request.contextPath}/LoginServlet" class="btn btn-primary">로그인</a>
-            	<a href="${pageContext.request.contextPath}/InsertMemberServlet" class="btn btn-primary">회원가입</a>
-            </c:if>
-            <!-- 로그인상태 -->
-            <c:if test="${loginMember!=null}">
-            	<a href="${pageContext.request.contextPath}/SelectMemberServlet" class="btn btn-primary">${loginMember.memberId}님 회원정보수정</a>
-            	<a href="${pageContext.request.contextPath}/LogoutServlet" class="btn btn-primary">로그아웃</a>  	
-            </c:if>
+       
+            
+           
         </div>
         <div>
         	<c:if test="${loginMember.memberLevel<10}">

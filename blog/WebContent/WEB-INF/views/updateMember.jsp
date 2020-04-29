@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,13 @@
 </head>
 <body>
 	<h3>Update Member</h3>
-	<form method = "post" action = "">
+	<form method = "post" action = "${pageContext.request.contextPath }/UpdateMember">
 	<div>
 		<input type = "hidden" name = "memberNo">
 	</div>
 	<div>
 		memberId:
-		<input type = "text" name = "memberId" value = "" readonly = "readonly">
+		<input type = "text" name = "memberId" value = "${member.memberId}" readonly = "readonly">
 	</div>
 	<div>
 		memberPw:

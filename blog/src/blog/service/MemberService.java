@@ -10,6 +10,26 @@ import java.util.*;
 public class MemberService {
 	private MemberDao memberDao;
 	private MemberidDao memberidDao;
+	
+	public void updateMember(Member member) {
+		Connection conn = null;
+		try {
+			conn = DBUtil.getConnection();
+			memberDao = new MemberDao();
+			memberDao.updateMember(conn, member);
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public void remove(Member member) {
 		Connection conn = null;
