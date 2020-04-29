@@ -62,8 +62,10 @@
      <c:if test="${loginMember==null}">
    		
    		<a href= "" class= "btn-search">Login</a>
-   		<button class="btn-search" name="search-button" title="Search">Search</button>		
+   		<button id = "btn" class="btn-search" name="search-button" title="Search">Search</button>		
 	</c:if>
+	</form>
+	<form>
 	<c:if test="${loginMember!=null}"> 
 		        <!-- 로그인상태 -->
            
@@ -81,7 +83,12 @@
  
     <script data-src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script defer data-src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
- 
+ 	<script>
+ 	let btn = document.getElementById("btn");
+ 	btn.addEventListener("click",function(){
+ 		document.getElementById("login").submit();
+ 	});
+ 	</script>
 </body>
 </html>
 <!--
