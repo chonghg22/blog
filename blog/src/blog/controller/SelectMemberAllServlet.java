@@ -37,7 +37,6 @@ public class SelectMemberAllServlet extends HttpServlet {
 		request.setAttribute("subjectList", subjectList);
 		
 		memberService = new MemberService();
-		
 		Map<String, Object> map = memberService.getMemberList(currentPage,ROW_PER_PAGE);
 		request.setAttribute("memberList", map.get("list"));
 		request.setAttribute("lastPage", map.get("lastPage"));

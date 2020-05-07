@@ -73,7 +73,7 @@ public class InsertMemberServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/HomeServlet");
 		//가입한 회원이 아닐경우 회원가입창으로 넘어간다.
 		}else {
-			response.sendRedirect(request.getContextPath()+"/InsertMemberServlet");
+			response.sendRedirect(request.getContextPath()+"/HomeServlet");
 			System.out.println("로그인 성공");
 		}
 	}

@@ -3,107 +3,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-      function login(){
-        var data = new FormData();
-        data.append('email', document.getElementById("user-email").value);
-        data.append('password', document.getElementById("user-pass").value);
-        var xhr = new XMLHttpRequest();
-        // @TODO - CHANGE "server-dummy.txt" TO YOUR SERVER SCRIPT
-        xhr.open('POST', "server-dummy.txt", true);
-        xhr.onload = function() {
-          if (xhr.status == 200) {
-            var response = JSON.parse(this.response);
-            // VALID
-            if (response.status) {
-              // @TODO - WHERE TO REDIRECT THE USER ON SIGN IN?
-              // location.href = "somewhere.html";
-            }
-            // INVALID EMAIL/PASSWORD
-            else {
-              alert(response.message);
-            }
-          } else {
-            alert("SERVER ERROR!");
-          }
-        };
-        xhr.send(data);
-        return false;
-      }
-    </script>
+  
 <title>login</title>
 <meta charset="UTF-8">
 <style>
- #login-form {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 40px;
-        background: #f2f2f2;
-      }
-      #login-form h1 {
-        text-align: center;
-        margin: 0 0 10px 0;
-      }
-      #login-form button {
-        box-sizing: border-box;
-        width: 80%;
-        margin: 10px;
-        padding: 10px;
-      }
-      #login-form button[type=submit] {
-        border: 0;
-        background: #4367c4;
-        color: #fff;
-      }
-body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	position: relative;
-	overflow-y: auto;
+/* CSS for sky theme end*/
+/*
+css for login start
+/*  #156DA9 blue
+    #00BCD4
+    #6FD653 bhover
+    #F6F6F6 */
+
+body{
+    margin: 0;
+    padding: 0;
+    background:#156DA9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+
 }
 
-#aside {
-	width: 200px;
-	height: 3000px;
-	position: fixed;
-	background: orange;
-	overflow: hidden;
-	float: center;
+.login-box{
+    width: 320px;
+    height: 300px;
+    background: #ffffff;
+    padding: 60px 30px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #6FD653;
+    -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+
 }
 
-#section {
-	margin-left: 300px;
-	background: white;
+.login-box h1{
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #00BCD4;
 }
+
+.login-box input[type="text"],
+.login-box input[type="password"]{
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"]{
+    border-radius: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #00BCD4;
+    font-size: 13px;
+    height: 40px;
+    text-align: center;
+    transition: 0.27s;
+}
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus{
+width: 80%;
+border-color:#6fd653;
+}
+
+.login-box input[type="submit"]{
+    width: 40%;
+    border: none;
+    outline: none;
+    background: #156DA9;
+    padding: 10px 0;
+    border-radius: 30px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="submit"]:hover{
+    background:#6FD653;
+   transition: .2s;
+}
+
+.login-box input[type="submit"]:focus{
+    transform: scaleX(1.1);
+}
+
+.login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #00bcd4;
+}
+
+.login-box a:hover{
+    color: #6FD653;
+}
+/*
+css login end
+*/
 </style>
 </head>
-<body>
-	 <div id="aside">		
-	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
-	</div>
-	<div id="section">	
-	<c:if test="${loginMember==null}">
-   		<li>
+<body> 	
+<div class="login-box">
+        <h1>login</h1>
+        <form  method = "post" action="${pageContext.request.contextPath}/LoginServlet">
+            <input type="text"name = "memberId"  placeholder="Username"  required>
+            <input type="password" name = "memberPw" placeholder="Password" required>
+            <input type="submit" value="Log in">
+        </form>
+       <c:if test="${loginMember==null}">
+   		<div>
+   		<a href="${pageContext.request.contextPath}/HomeServlet" >홈으로</a>
+   		</div>
+   		<div>
    		<a href="${pageContext.request.contextPath}/InsertMemberServlet" >회원가입</a>
-   		</li>   		
+   		</div>   		
 	</c:if>	
-		<div>
-		<form id="login-form" onsubmit="return login()" method = "post" action="${pageContext.request.contextPath}/LoginServlet">
-			<h3>로그인 폼</h3>
-			<input type="text" placeholder="ID" name = "memberId"  required/>
-	     	 <input type="text" placeholder="Pw" name = "memberPw" required/>
-	      	<button type = "submit">로그인</button>	
-	      		
-		</form>
-		</div>
-	</div>
+</div>
+	
+
+	
 </body>
 </html>
 

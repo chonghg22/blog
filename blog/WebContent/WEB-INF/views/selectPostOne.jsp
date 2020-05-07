@@ -3,54 +3,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	position: relative;
-	overflow-y: auto;
-}
-
-#aside {
-	width: 200px;
-	height: 3000px;
-	position: fixed;
-	background: orange;
-	overflow: hidden;
-	float: left;
-}
-
-#section {
-	margin-left: 300px;
-	background: white;
-}
-</style>
-  <title>ordersList</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<title>ordersList</title>
+<meta charset="utf-8">
+<link href="/blog/css/listForm.css" rel="stylesheet" media="all">
 </head>
 <body>
-    <div id="aside">
-		<!-- subject(나라이름) List 출력 -->
-	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
+	<div>	
+		<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
 	</div>
-    <div id="section" class="row">
-	<div class="col-sm-3"></div>	
-	<div class="col-sm-6" >
-		<h1>List</h1>
-		 <div class = "container-fluid">
-    <div>
+	<h1>List</h1>
+	<div>
     <c:if test = "${loginMember == null}">
 	좋아요
     </c:if>
@@ -70,32 +32,30 @@ body {
     ${map.badCount}
     
     </div>
-	<table class="table table-bordered">		
-		<tr>
-			<td>post_no</td>
-			<td>${post.postNo}</td>
-		</tr>
-		<tr>
-			<td>member_id</td>
-			<td>${post.memberId}</td>
-		</tr>
-		<tr>
-			<td>subject_name</td>
-			<td>${post.subjectName}</td>
-		</tr>
-		<tr>
-			<td>post_title</td>
-			<td>${post.postTitle}</td>
-		</tr>
-		<tr>
-			<td>post_content</td>
-			<td>${post.postContent}</td>
-		</tr>
-		<tr>
-			<td>post_date</td>
-			<td>${post.postDate}</td>
-		</tr>		
-	</table>	
+	<table>
+		<thead>
+			<tr>
+				<th>postNo</th>
+				<th>memberId</th>
+				<th>subjectName</th>
+				<th>postTitle</th>
+				<th>postContent</th>
+				<th>postDate</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+				<td data-column="postNo">${post.postNo}</td>
+				<td data-column="memberId">${post.memberId}</td>
+				<td data-column="subjectName">${post.subjectName}</td>
+				<td data-column="postTitle">${post.postTitle}</td>
+				<td data-column="postContent">${post.postContent}</td>
+				<td data-column="postDate">${post.postDate}</td>				
+			</tr>
+			
+		</tbody>
+	</table>
 	<div>		
 	<form method = "post" action = "${pageContext.request.contextPath}/AddCommentServlet">
 		<input type = "hidden" name = "postNo" value = "${post.postNo}">
@@ -110,9 +70,11 @@ body {
             </div>
          </c:forEach>
       </div>
-	</div>
-		<div class="col-sm-3"></div>
-	</div>
-	</div>
+	<c:if test="${currentPage>1}">
+		<a href="${pageContext.request.contextPath}/SelectMemberAllServlet?currentPage=${currentPage-1}">이전페이지</a>
+	</c:if>
+	<c:if test="${currentPage<lastPage}">
+		<a href="${pageContext.request.contextPath}/SelectMemberAllServlet?currentPage=${currentPage+1}">다음페이지</a>
+	</c:if> 
 </body>
 </html>

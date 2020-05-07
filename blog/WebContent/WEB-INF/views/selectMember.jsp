@@ -2,73 +2,44 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>login</title>
+<title>ordersList</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<style>
-body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	position: relative;
-	overflow-y: auto;
-}
-
-#aside {
-	width: 200px;
-	height: 3000px;
-	position: fixed;
-	background: orange;
-	overflow: hidden;
-	float: left;
-}
-
-#section {
-	margin-left: 300px;
-	background: white;
-}
-</style>
+<link href="/blog/css/listForm.css" rel="stylesheet" media="all">
 </head>
 <body>
-	 <div id="aside">
-		<!-- subject(나라이름) List 출력 -->
-	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
-	</div>
-	<div id="section" class="row">
-		<div class="col-sm-3"></div>
-		<div class="col-sm-6">
-        <h1>회원정보</h1>
-        <div class="form-group">
-			<label for="usr">member_id : ${member.memberId}</label> 		
-		</div>
-		<div class="form-group">
-			<label for="usr"> member_level : ${member.memberLevel}</label> 		
-		</div>
-		<div>
-			<a href = "${pageContext.request.contextPath}/UpdateMember?memberId=${member.memberId}">정보수정</a>
-		</div>	        
-        <div>
-            <a href="${pageContext.request.contextPath}/DeleteServlet">회원탈퇴</a>
-        </div>
-    </div>
-    </div>
+	<div>	
+		<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
+	</div>    	
+    <h1>회원정보</h1>   
+	<table>
+		<thead>
+			<tr>
+	       		<th>member_id</th>
+	       		<th>member_level</th>  
+	       		<th>정보수정</th>
+	       		<th>회원탈퇴</th>    
+	       	</tr>
+		</thead>
+       	<tbody>
+       		<tr>
+      			<td data-column="member_id"> ${member.memberId}</td>
+      			<td data-column="member_level">${member.memberLevel}</td>
+      			<td data-column="정보수정">
+      				<a href = "${pageContext.request.contextPath}/UpdateMember?memberId=${member.memberId}">정보수정</a>
+      			</td>
+      			<td data-column="회원탈퇴">
+      				 <a href="${pageContext.request.contextPath}/DeleteMemberServlet">회원탈퇴</a>
+      			</td>      			
+      	 	</tr>
+		</tbody>
+	</table>       
+	<c:if test="${currentPage>1}">
+		<a href="${pageContext.request.contextPath}/SelectPostAllServlet?currentPage=${currentPage-1}" class = "btn btn-secondary">이전페이지</a> 
+	</c:if>
+	<c:if test="${currentPage<lastPage}">        
+		<a href="${pageContext.request.contextPath}/SelectPostAllServlet?currentPage=${currentPage+1}" class = "btn btn-secondary">다음페이지</a> 
+	</c:if>
 </body>
 </html>
-

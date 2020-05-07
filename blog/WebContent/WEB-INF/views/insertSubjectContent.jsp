@@ -1,92 +1,125 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>login</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<style>
-body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	position: relative;
-	overflow-y: auto;
-}
-
-#aside {
-	width: 200px;
-	height: 3000px;
-	position: fixed;
-	background: orange;
-	overflow: hidden;
-	float: left;
-}
-
-#section {
-	margin-left: 300px;
-	background: white;
-}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Colorlib Templates">
+<meta name="author" content="Colorlib">
+<meta name="keywords" content="Colorlib Templates">
+<title>InsertForm</title>
+<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+<link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+<link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+<link href="/blog/css/registerForm.css" rel="stylesheet" media="all">
 </head>
 <body>
-	 <div id="aside">		
+	<div>		
 	<jsp:include page="/WEB-INF/views/inc/side.jsp"></jsp:include>
 	</div>
-	<div id="section" class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
-	<h3>InsertContent</h3>
-	<form method = "post" action = "${pageContext.request.contextPath}/InsertSubjectServlet">
-		<div class="form-group">
-			<label for="usr">memberId:</label> 						
-			<select name = "memberId"  class="form-control" id="usr">
-				<option value = "">선택하세요.</option>
-				<c:forEach var = "c" items = "${list}">
-				<option value = "${c.memberId}">${c.memberId}</option>
-				</c:forEach>
-			</select>
-		</div>						
-		<div class="form-group">
-			<label for="usr">subjectName:</label> 
-			<select name = "subjectName">		
-				<option value = "">선택하세요.</option>
-				<c:forEach var = "c" items = "${subjectList}">
-				<option value = "${c.subjectName}">${c.subjectName}</option>
-				</c:forEach>
-			</select>	
-		</div>				
-		<div class="form-group">
-			<label for="usr">postTitle:</label> 
-			<input type="password"	name="postTitle" class="form-control" id="usr">
-		</div>					
-		<div class="form-group">
-			<label for="usr">postContent:</label> 
-			<input type="password"	name="postContent" class="form-control" id="usr">
+	<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+		<div class="wrapper wrapper--w790">
+			<div class="card card-5">
+				<div class="card-heading">
+					<h2 class="title">Insert Subject Content</h2>
+				</div>
+				<div class="card-body">
+					<form method = "post" action = "${pageContext.request.contextPath}/InsertSubjectServlet">
+						<div class="form-row">
+							<div class="name">
+							MemberId:
+							</div>
+							<div class="value">
+								<div class="input-group">
+									<div class="row row-space">
+										<div class="input-group-desc">
+											<select name = "memberId" class="input--style-5" >
+												<option disabled="disabled" selected="selected">선택하세요.</option>
+												<c:forEach var = "c" items = "${list}">
+												<option value = "${c.memberId}">${c.memberId}</option>
+												</c:forEach>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="name">
+							subjectName:
+							</div>
+							<div class="value">
+								<div class="input-group">
+									<div class="row row-space">
+										<div class="input-group-desc">
+											<select name = "subjectName" class="input--style-5">		
+												<option disabled="disabled" selected="selected">선택하세요.</option>
+												<c:forEach var = "c" items = "${subjectList}">
+												<option value = "${c.subjectName}">${c.subjectName}</option>
+												</c:forEach>
+											</select>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="name">
+							PostTitle:
+							</div>
+							<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="text" name="postTitle">
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="name">
+							postContent:
+							</div>
+								<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="text" name="postContent">
+								</div>
+							</div>
+						</div>
+						<div>
+							<button class="btn btn--radius-2 btn--blue" type="submit">추가</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
-		<div>
-			<button type="submit" class="btn btn-primary">추가</button>
-		</div>
-	</form>
-		</div>
-		<div class="col-sm-3"></div>
-		</div>	
+	</div>
+	<script src="vendor/jquery/jquery.min.js" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script src="vendor/select2/select2.min.js" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script src="vendor/datepicker/moment.min.js" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script src="vendor/datepicker/daterangepicker.js" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script src="js/global.js" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="4a061543b3ab991da7fc1126-text/javascript"></script>
+	<script type="4a061543b3ab991da7fc1126-text/javascript">
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-23581568-13');
+	</script>
+	<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="4a061543b3ab991da7fc1126-|49" defer=""></script>
 </body>
 </html>
+<!--  
+<div class="form-row p-t-20">
+<label class="label label--block">Are you an existing customer?</label>
+<div class="p-t-15">
+<label class="radio-container m-r-55">Yes
+<input type="radio" checked="checked" name="exist">
+<span class="checkmark"></span>
+</label>
+<label class="radio-container">No
+<input type="radio" name="exist">
+<span class="checkmark"></span>
+</label>
+</div>
+</div>
+-->
