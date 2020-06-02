@@ -15,7 +15,7 @@ public class CommentDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<Comment> list = null;
-		String sql = "SELECT FROM comment WHERE post_no=?";
+		String sql = "SELECT FROM blog_comment WHERE post_no=?";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, postNo);			
@@ -42,7 +42,7 @@ public class CommentDao {
 
 		public void insertComment(Connection conn, Comment comment) throws SQLException {
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO comment(post_no, member_id, comment_content, comment_date) VALUES (?,?,?,now())";
+		String sql = "INSERT INTO blog_comment(post_no, member_id, comment_content, comment_date) VALUES (?,?,?,now())";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, comment.getPostNo());
@@ -59,7 +59,7 @@ public List<Comment> selectCommentList(Connection conn, int postNo) throws Excep
     List<Comment> list = new ArrayList<Comment>();
     PreparedStatement stmt = null;
     ResultSet rs = null;
-    String sql = "SELECT * FROM comment WHERE post_no=?";
+    String sql = "SELECT * FROM blog_comment WHERE post_no=?";
     try {
        stmt = conn.prepareStatement(sql);
        stmt.setInt(1, postNo);

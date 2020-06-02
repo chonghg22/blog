@@ -8,7 +8,7 @@ public class DBUtil {
 		//클라이언트 접속한다.
 		Class.forName("org.mariadb.jdbc.Driver");
 		//mariadb 내 blog 데이터베이스 접속한다.
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/blog","root","java1234");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/goodee","root","java1234");
 		return conn;
 	}
 	

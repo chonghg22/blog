@@ -16,7 +16,7 @@ public class LikeyDao {
 		boolean flag = true;
 		PreparedStatement stmt =null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM likey WHERE post_no =? AND member_id = ?";
+		String sql = "SELECT * FROM blog_likey WHERE post_no =? AND member_id = ?";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, likey.getPostNo());
@@ -33,7 +33,7 @@ public class LikeyDao {
 		
 	
 	public void insertLikey(Connection conn, Likey likey) throws SQLException {
-		String sql = "INSERT INTO likey (post_no, member_id, likey_ck, likey_date) VALUES (?,?,?,now())";
+		String sql = "INSERT INTO blog_likey (post_no, member_id, likey_ck, likey_date) VALUES (?,?,?,now())";
 		PreparedStatement stmt = null;
 		try {
 		stmt = conn.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class LikeyDao {
 		Map<String, Integer> map = new HashMap<String, Integer> ();
 		int goodCount = 0;
 		int badCount = 0;
-		String sql = "SELECT likey_ck, COUNT(likey_ck) cnt FROM likey WHERE post_no=? GROUP BY likey_ck";
+		String sql = "SELECT likey_ck, COUNT(likey_ck) cnt FROM blog_likey WHERE post_no=? GROUP BY likey_ck";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {

@@ -10,7 +10,7 @@ public class MemberidDao {
 	
 	public void insertMemberid(Connection conn, String memberid) throws Exception {
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO memberid(memberid, memberid_date) VALUES(?,now())";
+		String sql = "INSERT INTO blog_memberid(memberid, memberid_date) VALUES(?,now())";
 		try{
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, memberid);

@@ -8,7 +8,7 @@ public class SubjectDao {
 	private Subject subject;
 	
 	public void insertSubject(Connection conn, Subject subject) throws SQLException {
-		String sql = "INSERT INTO subject(subject_name, subject_date) VALUES (?,now())";
+		String sql = "INSERT INTO blog_subject(subject_name, subject_date) VALUES (?,now())";
 		PreparedStatement stmt = null;
 		try {
 			stmt = conn.prepareStatement(sql);
@@ -22,7 +22,7 @@ public class SubjectDao {
 	}
 	public List<Subject> selectSubjectAll(Connection conn) throws SQLException{
 		
-		String sql = "SELECT * FROM subject";
+		String sql = "SELECT * FROM blog_subject";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<Subject> list = new ArrayList<Subject>();
@@ -48,7 +48,7 @@ public class SubjectDao {
 	}
 	
 	public List<Subject> selectSubjectname(){
-		String sql = "SELECT subject_name FROM subject ORDER BY subject_name ASC";
+		String sql = "SELECT subject_name FROM blog_subject ORDER BY subject_name ASC";
 		List<Subject> list = new ArrayList<Subject>();
 		Connection conn = null;
 		PreparedStatement stmt = null;

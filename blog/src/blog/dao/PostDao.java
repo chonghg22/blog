@@ -8,7 +8,7 @@ public class PostDao {
 		Post post = new Post();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post WHERE post_no=?";
+		String sql = "SELECT * FROM blog_post WHERE post_no=?";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, postNo);
@@ -34,7 +34,7 @@ public class PostDao {
 		List<Post> list = new ArrayList<Post>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post ";
+		String sql = "SELECT * FROM blog_post ";
 		try {
 			stmt = conn.prepareStatement(sql);			
 			rs = stmt.executeQuery();
@@ -61,7 +61,7 @@ public class PostDao {
 	public void insertSubjectAll(Connection conn, Post post) throws SQLException {
 		PreparedStatement stmt = null;
 	
-		String sql = "INSERT INTO post(member_id, subject_name, post_title, post_content, post_date) VALUES(?,?,?,?,now())";
+		String sql = "INSERT INTO blog_post(member_id, subject_name, post_title, post_content, post_date) VALUES(?,?,?,?,now())";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, post.getMemberId());
@@ -81,7 +81,7 @@ public class PostDao {
 		List<Post> list = new ArrayList<Post>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post LIMIT ?,?";
+		String sql = "SELECT * FROM blog_post LIMIT ?,?";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, beginRow);
@@ -108,7 +108,7 @@ public class PostDao {
 	}
 	
 	public int SelectCount(Connection conn) throws Exception {
-		String sql = "SELECT count(*) FROM post";
+		String sql = "SELECT count(*) FROM blog_post";
 		int count = 0;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -130,7 +130,7 @@ public class PostDao {
 		List<Post> list = new ArrayList<Post>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM post WHERE subject_name=?";
+		String sql = "SELECT * FROM blog_post WHERE subject_name=?";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, subjectName);

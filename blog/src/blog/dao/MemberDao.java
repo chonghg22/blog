@@ -11,7 +11,7 @@ import blog.vo.*;
 
 public class MemberDao {
 	public void updateMember(Connection conn, Member member)throws Exception {
-		String sql = "UPDATE member SET member_pw=?, member_phone=?, member_address=?, member_birth=?, member_date=now() WHERE member_id=?";
+		String sql = "UPDATE blog_member SET member_pw=?, member_phone=?, member_address=?, member_birth=?, member_date=now() WHERE member_id=?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = conn.prepareStatement(sql);
@@ -26,7 +26,7 @@ public class MemberDao {
 		}
 	}
 	public Member selectMemberList(Connection conn, Member member) throws Exception {
-		String sql = "SELECT member_id, member_pw, member_level,member_phone, member_address, member_birth FROM member WHERE member_id=? AND member_pw=?";
+		String sql = "SELECT member_id, member_pw, member_level,member_phone, member_address, member_birth FROM blog_member WHERE member_id=? AND member_pw=?";
 		//Member m = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -57,7 +57,7 @@ public class MemberDao {
 	
 
 	public Member selectMemberAll(Connection conn, Member member) throws Exception {
-		String sql = "SELECT * FROM member WHERE member_id=?";
+		String sql = "SELECT * FROM blog_member WHERE member_id=?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
@@ -87,7 +87,7 @@ public class MemberDao {
 	public int deleteMeber(Connection conn, Member member) throws Exception{
 		PreparedStatement stmt = null;
 		int row = 0;
-		String sql = "DELETE FROM member WHERE member_id=? AND member_pw=?";
+		String sql = "DELETE FROM blog_member WHERE member_id=? AND member_pw=?";
 		try{
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());
@@ -104,7 +104,7 @@ public class MemberDao {
 	public void InsertMember(Connection conn, Member member) throws Exception {
 		//System.out.println(member.getMemberId()+"<<<<<<<<<DAO ID");
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO member(member_id, member_pw, member_level, member_phone, member_address, member_birth, member_date) VALUES(?,?,10,?,?,?,now())";
+		String sql = "INSERT INTO blog_member(member_id, member_pw, member_level, member_phone, member_address, member_birth, member_date) VALUES(?,?,10,?,?,?,now())";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());
@@ -123,7 +123,7 @@ public class MemberDao {
 		boolean flag = true;
 		PreparedStatement stmt = null;
 		//UNION , SubQuery , JOIN
-		String sql = "SELECT mi FROM (SELECT member_id mi FROM member UNION SELECT memberid mi FROM memberid) t WHERE t.mi = ?";
+		String sql = "SELECT mi FROM (SELECT member_id mi FROM blog_member UNION SELECT memberid mi FROM blog_memberid) t WHERE t.mi = ?";
 		ResultSet rs = null;
 		try {
 			stmt = conn.prepareStatement(sql);
@@ -140,7 +140,7 @@ public class MemberDao {
 	}
 
 	public List<Member> SelectAll(Connection conn, int beginRow, int rowPerPage) throws Exception{
-		String sql = "SELECT * FROM member LIMIT ?,?";
+		String sql = "SELECT * FROM blog_member LIMIT ?,?";
 		List<Member> list = new ArrayList<Member>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -169,7 +169,7 @@ public class MemberDao {
 	}
 
 	public int SelectCount(Connection conn, int rowPerPage) throws Exception {
-		String sql = "SELECT COUNT(*) FROM member";
+		String sql = "SELECT COUNT(*) FROM blog_member";
 		int count = 0;
 		int lastPage = 0;
 		PreparedStatement stmt = null;
@@ -194,7 +194,7 @@ public class MemberDao {
 	
 
 	public void UpdateLevel(Connection conn, Member member) throws Exception {
-		String sql = "UPDATE member SET member_level=? WHERE member_id=?";
+		String sql = "UPDATE blog_member SET member_level=? WHERE member_id=?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = conn.prepareStatement(sql);
